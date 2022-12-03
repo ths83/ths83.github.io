@@ -1,14 +1,11 @@
-layout: page
-title: "How Colima is a good alternative to Docker Desktop"
-permalink: /blog/how-colima-is-a-good-alternative-to-docker-desktop.md
-
-# How Colima is a good alternative to Docker Desktop
-
-Being a software engineer for some years, I have often used Docker Desktop in my career to manage containerized applications. As Docker [updated their service agreements](https://www.docker.com/blog/updating-product-subscriptions) August 31st, 2021, I needed to find an open-source or a free alternative to Docker Desktop, leading to Colima.
+Being a software engineer for some years, I have often used Docker Desktop in my career to manage containerized
+applications. As Docker [updated their service agreements](https://www.docker.com/blog/updating-product-subscriptions)
+August 31st, 2021, I needed to find an open-source or a free alternative to Docker Desktop, leading to Colima.
 
 ## What is Colima?
 
-[Colima](https://github.com/abiosoft/colima) is a VM based on [Lima](https://github.com/lima-vm/lima) providing container runtimes in MacOS/Linux.
+[Colima](https://github.com/abiosoft/colima) is a VM based on [Lima](https://github.com/lima-vm/lima) providing
+container runtimes in MacOS/Linux.
 
 Some of Colima's features are:
 
@@ -18,13 +15,57 @@ Some of Colima's features are:
 - Docker and containerd runtimes;
 - Kubernetes integration.
 
+## Colima vs Docker Desktop
+
+Time to get our hands dirty! Let's run some scripts to compare Colima and Docker Desktop performance.
+
+For the purpose of the tests, we gonna compare I/O using volumes and (^) calculation inside the container.
+Both VMs have the same configuration (2Gb memory, 2 CPUs, 60Gb disk).
+Files management and CPU stress load will be triggered using the official `alpine` Docker image.
+
+Please find the testing scripts on [Github](https://github.com/ths83/colima-blog).
+
+### I/O
+
+#### Using a [bind volume](https://docs.docker.com/storage/bind-mounts) (host)
+
+![5c663858814f3faa0a246e1a0ce7a5ec.png](/assets/how-colima-is-a-good-alternative-to-docker-desktop/5c663858814f3faa0a246e1a0ce7a5ec.png)
+
+| VM  | Create 200Mb file (MB/s) | Read 200Mb file (MB/s) | Copy 200Mb file (MB/s) | Create 10000 4Kb files (MB/s) | Delete folder (MB/s) |
+| --- | --- | --- | --- | --- | --- |
+| Colima | 165.29 | 250 | 126.58 | 24.27 | 61.54 |
+| Docker Desktop | 176.99 | 133.33 | 112.42 | 20.96 | 31.75 |
+
+#### Using a [Docker volume](https://docs.docker.com/storage/volumes)
+
+![cf88dfdcbf0ceff753f0660434c12b52.png](/assets/how-colima-is-a-good-alternative-to-docker-desktop/f5105030bff34509a5c5d3a9b5640e62.png)
+
+| VM  | Create 200Mb file (MB/s) | Read 200Mb file (MB/s) | Copy 200Mb file (MB/s) | Create 10000 4Kb files (MB/s) | Delete folder (MB/s) |
+| --- | --- | --- | --- | --- | --- |
+| Colima | 2222.22 | 6666.67 | 4000 | 2000 | 2500 |
+| Docker Desktop | 748.31 | 2000 | 1538.46 | 1333.33 | 1052.63 |
+
+#### Using the container
+
+![3ea63e37beaa9e31b3f79343ab7cd893.png](/assets/how-colima-is-a-good-alternative-to-docker-desktop/3ea63e37beaa9e31b3f79343ab7cd893.png)
+
+| VM  | Create 200Mb file (MB/s) | Read 200Mb file (MB/s) | Copy 200Mb file (MB/s) | Create 10000 4Kb files (MB/s) | Delete folder (MB/s) |
+| --- | --- | --- | --- | --- | --- |
+| Colima | 2000 | 6666.67 | 4000 | 1538.46 | 2000 |
+| Docker Desktop | 800 | 2000 | 1666.67 | 952.38 | 952.38 |
+
+### CPU load
+
+![79bf094c5816e3e55ad8ab8f86f2e2fb.png](/assets/how-colima-is-a-good-alternative-to-docker-desktop/79bf094c5816e3e55ad8ab8f86f2e2fb.png)
+
 ## How to install Colima?
 
 Using Homebrew as package manager, run `brew install colima` to install it.
 
 > Note: Other installation options are available [here](https://github.com/abiosoft/colima#installation).
 
-For a smoother experience, add Colima [autocompletion](https://github.com/abiosoft/colima/blob/main/cmd/completion.go) to your terminal.
+For a smoother experience, add Colima [autocompletion](https://github.com/abiosoft/colima/blob/main/cmd/completion.go)
+to your terminal.
 Finally, run `colima start` to start a default instance.
 
 ```shell
@@ -51,11 +92,13 @@ Docker is Colima's default runtime, meaning features from Docker are available o
 
 containerd is available by running `colima start -r containerd`.
 
-> NOTE: containerd is not covered in this article. More details are available [here](https://github.com/abiosoft/colima/blob/main/README.md#containerd).
+> NOTE: containerd is not covered in this article. More details are
+> available [here](https://github.com/abiosoft/colima/blob/main/README.md#containerd).
 
 ### Kubernetes
 
-Colima includes a standalone [K3s](https://k3s.io/) server, so you can manage a Kubernetes cluster using `colima start -k` .
+Colima includes a standalone [K3s](https://k3s.io/) server, so you can manage a Kubernetes cluster
+using `colima start -k` .
 
 They are other options available with the Kubernetes cluster:
 
@@ -72,7 +115,8 @@ Last but not the least, `kubectl` is required to use Kubernetes by running `brew
 The default `colima start` will set up an instance with 2 GB memory, 2 CPUs, 60 GB disk and a Docker runtime.
 
 You can easily customize your instance by using flags.
-As an example, `colima start -c 5 -m 4 -d 100` will start a 4 GB memory with 5 CPUs, an 100 GB disk and a Docker runtime instance.
+As an example, `colima start -c 5 -m 4 -d 100` will start a 4 GB memory with 5 CPUs, an 100 GB disk and a Docker runtime
+instance.
 To get the full list of available options, run `colima start -h` .
 
 ```shell
@@ -144,21 +188,25 @@ funny_profile    Running    aarch64    2       2GiB      60GiB    docker
 intel            Running    x86_64     1       8GiB      60GiB    docker
 ```
 
-> Note: Profile name must be unique. If the name is not given when starting an instance, `default` will be the default name.
+> Note: Profile name must be unique. If the name is not given when starting an instance, `default` will be the default
+> name.
 
 To stop your instance, run `colima stop` with `-p <PROFILE>` *(&lt;PROFILE&gt; is your instance name).*
 To delete a profile, run `colima delete` with `-p <PROFILE>`.
 
 ### Editing an instance
 
-It is possible to customize an instance before starting it using flags, or by running the `start` command with the `-e` flag.
-Your terminal editor will open the instance configuration file to be edited. After modification, the instance will start.
+It is possible to customize an instance before starting it using flags, or by running the `start` command with the `-e`
+flag.
+Your terminal editor will open the instance configuration file to be edited. After modification, the instance will
+start.
 
 > Note: Once created, each configuration property is editable except the disk size.
 
 #### Multi-architecture management
 
-The second great feature of Colima is the CPU architecture emulation (i.e. aarch64, x86_64), available with the `-a` flag.
+The second great feature of Colima is the CPU architecture emulation (i.e. aarch64, x86_64), available with the `-a`
+flag.
 Let's say you got an M1 laptop and the desired docker image does not have an aarch64 version.
 By switching or creating a specific amd64 instance, you will be able to run the image.
 
@@ -170,55 +218,18 @@ colima start -a x86_64
 colima start -a aarch64
 ```
 
-## Colima vs Docker Desktop
-
-Time to get our hands dirty! Let's run some scripts to compare Colima and Docker Desktop performance.
-
-For the purpose of the tests, we gonna compare I/O using volumes and (^) calculation inside the container.
-Both VMs have the same configuration (2Gb memory, 2 CPUs, 60Gb disk).
-Files management and CPU stress load will be triggered using the official `alpine` Docker image.
-
-Please find the testing scripts on [Github](https://github.com/ths83/colima-blog).
-
-### I/O
-
-#### Using a [bind volume](https://docs.docker.com/storage/bind-mounts) (host)
-
-![5c663858814f3faa0a246e1a0ce7a5ec.png](:/e995296e026a4efdb4f0ce3a21c68739)
-
-| VM  | Create 200Mb file (MB/s) | Read 200Mb file (MB/s) | Copy 200Mb file (MB/s) | Create 10000 4Kb files (MB/s) | Delete folder (MB/s) |
-| --- | --- | --- | --- | --- | --- |
-| Colima | 165.29 | 250 | 126.58 | 24.27 | 61.54 |
-| Docker Desktop | 176.99 | 133.33 | 112.42 | 20.96 | 31.75 |
-
-#### Using a [Docker volume](https://docs.docker.com/storage/volumes)
-
-![cf88dfdcbf0ceff753f0660434c12b52.png](:/f5105030bff34509a5c5d3a9b5640e62)
-
-| VM  | Create 200Mb file (MB/s) | Read 200Mb file (MB/s) | Copy 200Mb file (MB/s) | Create 10000 4Kb files (MB/s) | Delete folder (MB/s) |
-| --- | --- | --- | --- | --- | --- |
-| Colima | 2222.22 | 6666.67 | 4000 | 2000 | 2500 |
-| Docker Desktop | 748.31 | 2000 | 1538.46 | 1333.33 | 1052.63 |
-
-#### Using the container
-
-![3ea63e37beaa9e31b3f79343ab7cd893.png](:/be578b4fdb15448c96583daa539778cb)
-
-| VM  | Create 200Mb file (MB/s) | Read 200Mb file (MB/s) | Copy 200Mb file (MB/s) | Create 10000 4Kb files (MB/s) | Delete folder (MB/s) |
-| --- | --- | --- | --- | --- | --- |
-| Colima | 2000 | 6666.67 | 4000 | 1538.46 | 2000 |
-| Docker Desktop | 800 | 2000 | 1666.67 | 952.38 | 952.38 |
-
-### CPU load
-
-![79bf094c5816e3e55ad8ab8f86f2e2fb.png](:/726c30e07fae4d68b89bbf9178e7b9d6)
-
 ## Conclusion
 
-Colima's performance is way better than *Docker Desktop***, especially when performing I/O operations and CPU load. Moreover, features such as profile management and container runtime management are also a great addition to this project.
+Colima's performance is way better than *Docker Desktop***, especially when performing I/O operations and CPU load.
+Moreover, features such as profile management and container runtime management are also a great addition to this
+project.
 
-**If you are looking for a Docker Desktop alternative on Mac, Colima seems to be the best player for container management.**
+**If you are looking for a Docker Desktop alternative on Mac, Colima seems to be the best player for container
+management.**
 
 *Tested on an M1 Mac Book Pro with Colima v0.4.6, Docker Desktop v4.14.1.*
 
-***Docker Desktop beta features can improve I/O operations by enabling VirtioFS and the new Virtualization framework, but Colima still have the best I/O performance.*
+***Docker Desktop beta features can improve I/O operations by enabling VirtioFS and the new Virtualization framework,
+but Colima still have the best I/O performance.*
+
+> Post also available on [Kumojin's website](https://kumojin.com/en/colima-alternative-docker-desktop)
