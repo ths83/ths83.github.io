@@ -227,6 +227,11 @@ project.
 **If you are looking for a Docker Desktop alternative on Mac, Colima seems to be the best player for container
 management.**
 
+#### Container applications alternatives
+
+- [Rancher Desktop](https://rancherdesktop.io/) using the Lima VM and a GUI.
+- [Finch](https://aws.amazon.com/blogs/opensource/introducing-finch-an-open-source-client-for-container-development/)
+
 *Tested on an M1 Mac Book Pro with Colima v0.4.6, Docker Desktop v4.14.1.*
 
 ***Docker Desktop beta features can improve I/O operations by enabling VirtioFS and the new Virtualization framework,
