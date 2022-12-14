@@ -98,9 +98,9 @@ containerd is available by running `colima start -r containerd`.
 ### Kubernetes
 
 Colima includes a standalone [K3s](https://k3s.io/) server, so you can manage a Kubernetes cluster
-using `colima start -k` .
+using `colima start -k`.
 
-They are other options available with the Kubernetes cluster:
+There are other options available with the Kubernetes cluster:
 
 - picking a specific runtime with the `-r` flag;
 - deploying an ingress controller [Traefik](https://github.com/traefik/traefik) with the `--kubernetes-ingress` flag;
