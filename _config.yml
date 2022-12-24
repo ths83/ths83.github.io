@@ -3,7 +3,7 @@ jekyll.environment: production
 title: Thomas Perron's Blog
 github_username: ths83
 linkedin_username: thomasperron
-google_analytics: G-YKQVQLKBDD
+google_analytics: G-XLQ43B3GT7
 
 # Build settings
 theme: minima
