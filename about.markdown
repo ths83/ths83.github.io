@@ -3,9 +3,8 @@ layout: page
 title: About
 permalink: /about/
 ---
+As a Senior Full Stack Software Engineer based in Canada, I have a strong passion for learning new technologies and coding.
 
-I am a Senior Full Stack Software Engineer living in 🇨🇦, craving to learn new technologies and to code.
+My areas of interest include full-stack engineering, cloud engineering, IoT, mobile, blockchain, and infrastructure as code.
 
-Interested in : Full-stack engineering, Cloud engineering, IoT, Mobile, Blockchain, Infrastructure as Code.
-
-Currently working at [Kumojin](https://kumojin.com/en/) and as a part-time freelancer.
+I am currently employed at [Kumojin](https://kumojin.com/en/) and also offer my services as a part-time freelancer.
