@@ -48,10 +48,24 @@ For a more hands-on approach, you can explore some examples at https://gobyexamp
 
 Online courses can also be a good option:
 
-- [AppliedGo's Master Go Fundamentals course](https://appliedgo.com/courses/mastergo-fundamentals)
-- [AppliedGo's Concurrency course](https://appliedgo.com/courses/concurrency)
-- [Jetbrains' Go course](https://hyperskill.org/tracks/25?category=12)
-- [Calhoun's courses](https://courses.calhoun.io/courses)
+##### Applied Go
+
+- [Master Go Fundamentals course](https://appliedgo.com/courses/mastergo-fundamentals)
+- [Concurrency course](https://appliedgo.com/courses/concurrency)
+
+##### Jetbrains
+
+- [Go course](https://hyperskill.org/tracks/25?category=12)
+
+##### Calhoun
+
+- [Courses](https://courses.calhoun.io/courses)
+
+##### Educative.io
+
+- [Golang for programmers](https://www.educative.io/path/golang-for-programmers)
+- [Concurrency in Go](https://www.educative.io/courses/concurrency-in-go)
+- [The Way to Go](https://www.educative.io/courses/the-way-to-go)
 
 Alternatively, you can watch those tutorials on YouTube:
 
