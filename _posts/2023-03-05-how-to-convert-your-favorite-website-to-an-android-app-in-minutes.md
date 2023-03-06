@@ -6,7 +6,13 @@ official mobile application for this amazing platform.
 
 So I decided to create my own using an Android WebView.
 
-_(I am not sponsored by or have any kind of partnership with Educative)._
+##### A few words about Educative
+
+Educative.io is an online learning platform that provides interactive courses in software development, machine
+learning,
+data science, and other tech-related fields.
+
+_**I am not sponsored by or have any kind of partnership with Educative.**_
 
 ## What is a WebView?
 
