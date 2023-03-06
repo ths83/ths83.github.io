@@ -1,3 +1,6 @@
+When I travel, I frequently use my phone or tablet to read content, and having a mobile app for this purpose can make a
+significant difference in my experience.
+
 I have been studying on [educative.io](https://www.educative.io/) for a few weeks and was surprised to find no
 official mobile application for this amazing platform.
 
