@@ -336,8 +336,7 @@ Disable safe browsing warnings:
 
 You can take a look at the GitHub's repo for this post [here](https://github.com/ths83/educative-android-webapp).
 
-<iframe width="400" height="400" src="https://user-images.githubusercontent.com/11136821/222994706-3dea7fb6-3dfa-415b-8e3d-ed90a7e9b0ac.mp4" controls="controls">
-</iframe>
+<video style="width: 400px;height: 400px;" controls=""> <source type="video/mp4" src="https://user-images.githubusercontent.com/11136821/222994706-3dea7fb6-3dfa-415b-8e3d-ed90a7e9b0ac.mp4"/> </video>
 
 And this is it for the post! Thanks for reading and stay tuned!
 
