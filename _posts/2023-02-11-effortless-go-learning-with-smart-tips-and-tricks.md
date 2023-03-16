@@ -87,6 +87,7 @@ building an application with a clean architecture.
 - [Testify](https://github.com/stretchr/testify): a robust and flexible testing library for Go
 - [Mockery](https://github.com/vektra/mockery): a tool for generating mock objects in Go
 - [Gin](https://github.com/gin-gonic/gin): a high-performance HTTP framework for Go
+- [Go Faker](https://github.com/go-faker/faker): a data faker generator for struct
 
 I also like to work with [this](https://github.com/onsi/ginkgo) BDD-style testing library.
 
