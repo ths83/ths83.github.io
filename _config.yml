@@ -1,14 +1,15 @@
 jekyll.environment: production
 
 title: Thomas Perron's Blog
-github_username: ths83
-linkedin_username: thomasperron
 google_analytics: G-XLQ43B3GT7
 
 # Build settings
 theme: minima
 minima:
   skin: dark
+  social_links:
+    - { platform: github, user_url: "https://github.com/ths83" }
+    - { platform: linkedin, user_url: "https://www.linkedin.com/in/thomasperron" }
 plugins:
   - jekyll-feed
 
