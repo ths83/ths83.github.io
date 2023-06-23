@@ -11,9 +11,10 @@ With diverse experience in a wide range of areas including full-stack engineerin
 Things (IoT), mobile app development, blockchain technology, and infrastructure as code, I am well-equipped to deliver
 exceptional results.
 
-I am currently employed at [Kumojin](https://kumojin.com/en/) where I apply my expertise to a variety of projects
-including front-end and
-back-end development, while also providing part-time freelance services to clients
+I am currently employed at [Ticketmaster](https://www.ticketmaster.com/) where I apply my expertise to a variety of
+projects
+including front-end
+back-end development and DevOps, while also providing part-time freelance services to clients
 in need of customized software solutions and consulting.
 
 Outside the realm of technology, I enjoy a number of hobbies that nourish both my mind and body. These pursuits
